@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { TypographyRoutingModule } from './typography-routing.module';
 import { TypographyComponent } from './typography/typography.component';
-import { SharedModule } from 'src/app/shared/shared.module';
+import { SharedModule } from '../../shared/shared.module';
 
 
 @NgModule({

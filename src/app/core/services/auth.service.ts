@@ -1,8 +1,8 @@
-import { Injectable, Inject } from '@angular/core';
+import { Injectable, Inject, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { delay, map } from 'rxjs/operators';
-import * as jwt_decode from 'jwt-decode';
-import * as moment from 'moment';
+// import * as jwt_decode from 'jwt-decode';
+import moment from 'moment';
 
 import { environment } from '../../../environments/environment';
 import { of, EMPTY } from 'rxjs';
@@ -11,8 +11,9 @@ import { of, EMPTY } from 'rxjs';
     providedIn: 'root'
 })
 export class AuthenticationService {
-
-    constructor(private http: HttpClient,
+    private http = inject(HttpClient);
+    
+    constructor(
         @Inject('LOCALSTORAGE') private localStorage: Storage) {
     }
 

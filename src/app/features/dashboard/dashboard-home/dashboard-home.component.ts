@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { NotificationService } from 'src/app/core/services/notification.service';
+import { NotificationService } from '../../../core/services/notification.service';
 import { Title } from '@angular/platform-browser';
 import { NGXLogger } from 'ngx-logger';
-import { AuthenticationService } from 'src/app/core/services/auth.service';
+import { AuthenticationService } from '../../../core/services/auth.service';
 
 @Component({
   selector: 'app-dashboard-home',
   templateUrl: './dashboard-home.component.html',
-  styleUrls: ['./dashboard-home.component.css']
+  styleUrls: ['./dashboard-home.component.scss']
 })
 export class DashboardHomeComponent implements OnInit {
   currentUser: any;

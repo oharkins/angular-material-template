@@ -11,12 +11,20 @@
 
     <span class="navbar-spacer"></span>
 
+    <button mat-icon-button (click)="themeService.toggle()" [matTooltip]="themeService.themeScheme().title">
+      <mat-icon matBadgeColor="accent" aria-hidden="false">
+        {{ themeService.themeScheme().icon }}
+      </mat-icon>
+    </button>
+
     <button
       mat-icon-button
       [matMenuTriggerFor]="notificationMenu"
       aria-hidden="false"
     >
-      <mat-icon matBadge="2" matBadgeColor="accent" aria-hidden="false">notifications</mat-icon>
+      <mat-icon matBadge="2" matBadgeColor="accent" aria-hidden="false"
+        >notifications</mat-icon
+      >
     </button>
     <mat-menu
       #notificationMenu="matMenu"
@@ -74,8 +82,9 @@
           [routerLink]="['/dashboard']"
           routerLinkActive="active"
         >
-          <mat-icon mat-list-icon> dashboard </mat-icon>
-          <p mat-line>Dashboard</p>
+          <p mat-line>
+            <mat-icon mat-list-icon> dashboard </mat-icon>Dashboard
+          </p>
         </a>
 
         <a
@@ -83,22 +92,18 @@
           [routerLink]="['/customers']"
           routerLinkActive="active"
         >
-          <mat-icon mat-list-icon> business </mat-icon>
-          <p mat-line>Customers</p>
+          <p mat-line><mat-icon mat-list-icon> business </mat-icon>Customers</p>
         </a>
         <a mat-list-item [routerLink]="['/users']" routerLinkActive="active">
-          <mat-icon mat-list-icon> people </mat-icon>
-          <p mat-line>Users</p>
+          <p mat-line><mat-icon mat-list-icon> people </mat-icon>Users</p>
         </a>
 
         <a mat-list-item [routerLink]="['/account/profile']">
-          <mat-icon mat-list-icon>person</mat-icon>
-          <p mat-line>Account</p>
+          <p mat-line><mat-icon mat-list-icon>person</mat-icon>Account</p>
         </a>
 
         <a mat-list-item [routerLink]="['/auth/login']">
-          <mat-icon mat-list-icon>exit_to_app</mat-icon>
-          <p mat-line>Log out</p>
+          <p mat-line><mat-icon mat-list-icon>exit_to_app</mat-icon>Log out</p>
         </a>
 
         <mat-divider></mat-divider>
@@ -106,16 +111,16 @@
         <h3 mat-subheader>Resources</h3>
 
         <a mat-list-item [routerLink]="['/icons']" routerLinkActive="active">
-          <mat-icon mat-list-icon> toll </mat-icon>
-          <p mat-line>Icons</p>
+          <p mat-line><mat-icon mat-list-icon> toll </mat-icon>Icons</p>
         </a>
         <a
           mat-list-item
           [routerLink]="['/typography']"
           routerLinkActive="active"
         >
-          <mat-icon mat-list-icon> font_download </mat-icon>
-          <p mat-line>Typography</p>
+          <p mat-line>
+            <mat-icon mat-list-icon> font_download </mat-icon>Typography
+          </p>
         </a>
 
         <a
@@ -123,8 +128,9 @@
           href="https://material.angular.io/components/categories"
           target="_blank"
         >
-          <mat-icon mat-list-icon> link </mat-icon>
-          <p mat-line>Material Components</p>
+          <p mat-line>
+            <mat-icon mat-list-icon> link </mat-icon>Material Components
+          </p>
         </a>
 
         <a
@@ -133,8 +139,7 @@
           [routerLink]="['/about']"
           routerLinkActive="active"
         >
-          <mat-icon mat-list-icon> info_outline </mat-icon>
-          <p mat-line>About</p>
+          <p mat-line><mat-icon mat-list-icon> info_outline </mat-icon>About</p>
         </a>
       </mat-nav-list>
     </mat-sidenav>

@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpInterceptor, HttpErrorResponse } from '@angular/common/http';
 import { HttpRequest } from '@angular/common/http';
 import { HttpHandler } from '@angular/common/http';
@@ -12,10 +12,10 @@ import { MatDialog } from '@angular/material/dialog';
  
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
+    private authService = inject(AuthenticationService);
+    private router = inject(Router);
+    private dialog = inject(MatDialog);
 
-    constructor(private authService: AuthenticationService,
-        private router: Router,
-        private dialog: MatDialog) { }
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 

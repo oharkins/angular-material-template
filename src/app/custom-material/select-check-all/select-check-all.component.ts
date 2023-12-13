@@ -5,13 +5,13 @@ import { MatCheckboxChange } from '@angular/material/checkbox';
 @Component({
   selector: 'app-select-check-all',
   templateUrl: './select-check-all.component.html',
-  styleUrls: ['./select-check-all.component.css'],
+  styleUrls: ['./select-check-all.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
 export class SelectCheckAllComponent {
   @Input()
   model: UntypedFormControl = new UntypedFormControl;
-  @Input() values = [];
+  @Input() values: any[] = [];
   @Input() text = 'Select All';
 
   constructor() { }

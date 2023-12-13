@@ -3,13 +3,13 @@ import { Component, OnInit } from '@angular/core';
 import { UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 
-import { NotificationService } from 'src/app/core/services/notification.service';
-import { AuthenticationService } from 'src/app/core/services/auth.service';
+import { NotificationService } from '../../../core/services/notification.service';
+import { AuthenticationService } from '../../../core/services/auth.service';
 
 @Component({
   selector: 'app-password-reset-request',
   templateUrl: './password-reset-request.component.html',
-  styleUrls: ['./password-reset-request.component.css']
+  styleUrls: ['./password-reset-request.component.scss']
 })
 export class PasswordResetRequestComponent implements OnInit {
 

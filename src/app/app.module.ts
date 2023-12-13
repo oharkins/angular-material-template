@@ -6,27 +6,25 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { CustomMaterialModule } from './custom-material/custom-material.module';
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from './app.routes.module';
 import { LoggerModule } from 'ngx-logger';
 import { environment } from '../environments/environment';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],  
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     CoreModule,
     SharedModule,
     CustomMaterialModule.forRoot(),
-    AppRoutingModule,
+    AppRoutingModule,    
     LoggerModule.forRoot({
       serverLoggingUrl: `http://my-api/logs`,
       level: environment.logLevel,
-      serverLogLevel: environment.serverLogLevel
-    })
+      serverLogLevel: environment.serverLogLevel,
+    }),
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
