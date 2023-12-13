@@ -5,7 +5,7 @@ import { ThemeService } from './core/services/theme.service';
 @Component({
   selector: 'app-root',
   template: `<router-outlet></router-outlet>`,
-  providers: [ThemeService],
+  // providers: [ThemeService],
 })
 export class AppComponent {
   title = 'frontend';

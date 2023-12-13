@@ -10,14 +10,11 @@ import { AuthGuard } from './guards/auth.guard';
 import { throwIfAlreadyLoaded } from './guards/module-import.guard';
 import { GlobalErrorHandler } from './services/globar-error.handler';
 import { AdminGuard } from './guards/admin.guard';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    HttpClientModule
-  ],
-  declarations: [
-  ],
+  imports: [CommonModule, HttpClientModule],
+  declarations: [],
   providers: [
     AuthGuard,
     AdminGuard,
@@ -25,22 +22,22 @@ import { AdminGuard } from './guards/admin.guard';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: SpinnerInterceptor,
-      multi: true
+      multi: true,
     },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
-      multi: true
+      multi: true,
     },
     {
       provide: ErrorHandler,
-      useClass: GlobalErrorHandler
+      useClass: GlobalErrorHandler,
     },
+    CookieService,
     { provide: NGXLogger, useClass: NGXLogger },
-    { provide: 'LOCALSTORAGE', useValue: window.localStorage }
+    { provide: 'LOCALSTORAGE', useValue: window.localStorage },
   ],
-  exports: [
-  ]
+  exports: [],
 })
 export class CoreModule {
   constructor(@Optional() @SkipSelf() parentModule: CoreModule) {

@@ -5,13 +5,15 @@ import {
   RendererFactory2,
   computed,
   effect,
+  inject,
   signal,
 } from '@angular/core';
 
 import { takeUntilDestroyed, toObservable } from '@angular/core/rxjs-interop';
+import { CookieService } from 'ngx-cookie-service';
 import { map, pairwise } from 'rxjs';
 
-export type ThemeMode = 'dark' | 'light' | null;
+export type ThemeMode = 'dark' | 'light' | '';
 export type ThemeIcon = 'dark_mode' | 'light_mode' | null;
 export type ThemeName = 'Switch to Dark Mode' | 'Switch to Light Mode' | '';
 
@@ -25,8 +27,10 @@ interface ThemeState {
   providedIn: 'root',
 })
 export class ThemeService {
+  private cookieService = inject(CookieService);
+  
   private state = signal<ThemeState>({
-    mode: null,
+    mode: '',
     icon: null,
     title: '',
   });
@@ -43,10 +47,7 @@ export class ThemeService {
 
   private renderer: Renderer2;
 
-  constructor(
-    rendererFactory: RendererFactory2,
-    @Inject('LOCALSTORAGE') private localStorage: Storage
-  ) {
+  constructor(rendererFactory: RendererFactory2) {
     // Create new renderer from renderFactory, to make it possible to use renderer2 in a service
     this.renderer = rendererFactory.createRenderer(null, null);
 
@@ -61,14 +62,14 @@ export class ThemeService {
   private _setColorScheme(mode: ThemeMode) {
     this._setState(mode);
     // Save theme-scheme to localStorage
-    if (mode === null) this.localStorage.removeItem('theme-mode');
-    else this.localStorage.setItem('theme-mode', mode);
+    if (mode === null) this.cookieService.delete('theme-mode');
+    else this.cookieService.set('theme-mode', mode);
   }
 
   private _getColorScheme() {
-    let mode: ThemeMode = this.localStorage.getItem('theme-mode') as ThemeMode;
+    let mode: ThemeMode = this.cookieService.get('theme-mode') as ThemeMode;
     // Check if any theme-scheme is stored in localStorage
-    if (mode === null) {
+    if (mode === '') {
       // Save theme-scheme from localStorage
       mode = this._detectPrefersColorScheme();
     }

@@ -6,67 +6,74 @@ import moment from 'moment';
 
 import { environment } from '../../../environments/environment';
 import { of, EMPTY } from 'rxjs';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthenticationService {
-    private http = inject(HttpClient);
-    
-    constructor(
-        @Inject('LOCALSTORAGE') private localStorage: Storage) {
-    }
+  private http = inject(HttpClient);
+  private cookieService = inject(CookieService);
 
-    login(email: string, password: string) {
-        return of(true)
-            .pipe(delay(1000),
-                map((/*response*/) => {
-                    // set token property
-                    // const decodedToken = jwt_decode(response['token']);
+  constructor() {}
 
-                    // store email and jwt token in local storage to keep user logged in between page refreshes
-                    this.localStorage.setItem('currentUser', JSON.stringify({
-                        token: 'aisdnaksjdn,axmnczm',
-                        isAdmin: true,
-                        email: 'john.doe@gmail.com',
-                        id: '12312323232',
-                        alias: 'john.doe@gmail.com'.split('@')[0],
-                        expiration: moment().add(1, 'days').toDate(),
-                        fullName: 'John Doe'
-                    }));
+  login(email: string, password: string) {
+    return of(true).pipe(
+      delay(1000),
+      map((/*response*/) => {
+        // set token property
+        // const decodedToken = jwt_decode(response['token']);
 
-                    return true;
-                }));
-    }
-
-    logout(): void {
-        // clear token remove user from local storage to log user out
-        this.localStorage.removeItem('currentUser');
-    }
-
-    getCurrentUser(): any {
-        // TODO: Enable after implementation
-        // return JSON.parse(this.localStorage.getItem('currentUser'));
-        return {
+        // store email and jwt token in local storage to keep user logged in between page refreshes
+        this.cookieService.set('currentUser', JSON.stringify({
             token: 'aisdnaksjdn,axmnczm',
             isAdmin: true,
             email: 'john.doe@gmail.com',
             id: '12312323232',
             alias: 'john.doe@gmail.com'.split('@')[0],
             expiration: moment().add(1, 'days').toDate(),
-            fullName: 'John Doe'
-        };
-    }
+            fullName: 'John Doe',
+          })
+        );
 
-    passwordResetRequest(email: string) {
-        return of(true).pipe(delay(1000));
-    }
+        return true;
+      })
+    );
+  }
 
-    changePassword(email: string, currentPwd: string, newPwd: string) {
-        return of(true).pipe(delay(1000));
-    }
+  logout(): void {
+    // clear token remove user from local storage to log user out
+    this.cookieService.delete('currentUser');
+  }
 
-    passwordReset(email: string, token: string, password: string, confirmPassword: string): any {
-        return of(true).pipe(delay(1000));
-    }
+  getCurrentUser(): any {
+    // TODO: Enable after implementation
+    // return JSON.parse(this.localStorage.getItem('currentUser'));
+    return {
+      token: 'aisdnaksjdn,axmnczm',
+      isAdmin: true,
+      email: 'john.doe@gmail.com',
+      id: '12312323232',
+      alias: 'john.doe@gmail.com'.split('@')[0],
+      expiration: moment().add(1, 'days').toDate(),
+      fullName: 'John Doe',
+    };
+  }
+
+  passwordResetRequest(email: string) {
+    return of(true).pipe(delay(1000));
+  }
+
+  changePassword(email: string, currentPwd: string, newPwd: string) {
+    return of(true).pipe(delay(1000));
+  }
+
+  passwordReset(
+    email: string,
+    token: string,
+    password: string,
+    confirmPassword: string
+  ): any {
+    return of(true).pipe(delay(1000));
+  }
 }
