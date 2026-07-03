@@ -64,7 +64,7 @@ export class ChangePasswordComponent implements OnInit {
 
     this.authService.changePassword(email, this.currentPassword, this.newPassword)
       .subscribe(
-        data => {
+        _data => {
           this.logger.info(`User ${email} changed password.`);
           this.form.reset();
           this.notificationService.openSnackBar('Your password has been changed.');

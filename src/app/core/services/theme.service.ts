@@ -1,5 +1,4 @@
 import {
-  Inject,
   Injectable,
   Renderer2,
   RendererFactory2,
@@ -11,7 +10,7 @@ import {
 
 import { takeUntilDestroyed, toObservable } from '@angular/core/rxjs-interop';
 import { CookieService } from 'ngx-cookie-service';
-import { map, pairwise } from 'rxjs';
+import { pairwise } from 'rxjs';
 
 export type ThemeMode = 'dark' | 'light' | '';
 export type ThemeIcon = 'dark_mode' | 'light_mode' | null;
@@ -39,7 +38,7 @@ export class ThemeService {
 
   private beforeStateChange$ = this.state$
     .pipe(takeUntilDestroyed(), pairwise())
-    .subscribe(([previous, current]) => {
+    .subscribe(([previous, _current]) => {
       this.renderer.removeClass(document.body, `${previous.mode}-theme`);
     });
 
@@ -52,7 +51,7 @@ export class ThemeService {
     this.renderer = rendererFactory.createRenderer(null, null);
 
     effect(() => {
-      let state = this.state();
+      const state = this.state();
       this.renderer.addClass(document.body, `${state.mode}-theme`);
     });
 

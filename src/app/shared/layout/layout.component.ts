@@ -33,9 +33,9 @@ export class LayoutComponent implements OnInit, OnDestroy, AfterViewInit {
 
   private _mobileQueryListener: () => void;
   mobileQuery: MediaQueryList;
-  showSpinner: boolean = false;
-  userName: string = '';
-  isAdmin: boolean = false;
+  showSpinner = false;
+  userName = '';
+  isAdmin = false;
 
   private autoLogoutSubscription: Subscription = new Subscription();
 

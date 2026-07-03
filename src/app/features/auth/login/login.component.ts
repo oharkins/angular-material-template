@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
         this.authenticationService
             .login(email.toLowerCase(), password)
             .subscribe(
-                data => {
+                _data => {
                     if (rememberMe) {
                         localStorage.setItem('savedUserEmail', email);
                     } else {

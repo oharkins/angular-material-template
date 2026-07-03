@@ -28,14 +28,16 @@ export class AuthInterceptor implements HttpInterceptor {
                     'Bearer ' + user.token)
             });
 
-            return next.handle(cloned).pipe(tap(() => { }, (err: any) => {
-                if (err instanceof HttpErrorResponse) {
-                    if (err.status === 401) {
-                        this.dialog.closeAll();
-                        this.router.navigate(['/auth/login']);
-                    }
-                }
-            }));
+            return next.handle(cloned).pipe(
+              tap({
+                error: (err: HttpErrorResponse) => {
+                  if (err.status === 401) {
+                    this.dialog.closeAll();
+                    this.router.navigate(['/auth/login']);
+                  }
+                },
+              })
+            );
 
         } else {
             return next.handle(req);

@@ -8,7 +8,7 @@ import { BehaviorSubject } from 'rxjs';
 export class ApplicationService {
   public applicationLoaded$ = new BehaviorSubject<boolean>(undefined as any);
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+  constructor(@Inject(PLATFORM_ID) private platformId: object) {}
 
   get isBrowser(): boolean {
     return isPlatformBrowser(this.platformId);

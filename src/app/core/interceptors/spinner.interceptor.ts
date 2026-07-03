@@ -1,4 +1,3 @@
-import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Injectable, inject } from '@angular/core';
 import { HttpInterceptor, HttpResponse } from '@angular/common/http';
@@ -26,7 +25,7 @@ export class SpinnerInterceptor implements HttpInterceptor {
             this.spinnerService.hide();
           }
         },
-        (error) => {
+        (_error) => {
           this.spinnerService.hide();
         }
       )

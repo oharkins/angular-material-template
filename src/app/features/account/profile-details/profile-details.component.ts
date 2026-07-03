@@ -10,9 +10,9 @@ import { AuthenticationService } from '../../../core/services/auth.service';
 })
 export class ProfileDetailsComponent implements OnInit {
 
-  fullName: string = "";
-  email: string = "";
-  alias: string = "";
+  fullName = "";
+  email = "";
+  alias = "";
 
   constructor(private authService: AuthenticationService) { }
 
