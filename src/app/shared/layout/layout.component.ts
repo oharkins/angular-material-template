@@ -5,6 +5,7 @@ import {
   OnDestroy,
   AfterViewInit,
   inject,
+  ChangeDetectionStrategy
 } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { timer } from 'rxjs';
@@ -16,9 +17,11 @@ import { AuthGuard } from '../../core/guards/auth.guard';
 import { ThemeService } from '../../core/services/theme.service';
 
 @Component({
-  selector: 'app-layout',
-  templateUrl: './layout.component.html',
-  styleUrls: ['./layout.component.scss'],
+    selector: 'app-layout',
+    templateUrl: './layout.component.html',
+    styleUrls: ['./layout.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class LayoutComponent implements OnInit, OnDestroy, AfterViewInit {
   public themeService = inject(ThemeService);

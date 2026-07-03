@@ -1,14 +1,16 @@
 import { UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { AuthenticationService } from '../../../core/services/auth.service';
 import { NotificationService } from '../../../core/services/notification.service';
 
 @Component({
-  selector: 'app-password-reset',
-  templateUrl: './password-reset.component.html',
-  styleUrls: ['./password-reset.component.scss']
+    selector: 'app-password-reset',
+    templateUrl: './password-reset.component.html',
+    styleUrls: ['./password-reset.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class PasswordResetComponent implements OnInit {
 

@@ -1,4 +1,5 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatCardModule } from '@angular/material/card';
 
 import { IconsComponent } from './icons.component';
 
@@ -6,9 +7,10 @@ describe('IconsComponent', () => {
   let component: IconsComponent;
   let fixture: ComponentFixture<IconsComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ IconsComponent ]
+      declarations: [ IconsComponent ],
+      imports: [ MatCardModule ],
     })
     .compileComponents();
   }));

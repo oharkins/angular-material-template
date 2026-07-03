@@ -1,13 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { NotificationService } from '../../../core/services/notification.service';
 import { Title } from '@angular/platform-browser';
 import { NGXLogger } from 'ngx-logger';
 import { AuthenticationService } from '../../../core/services/auth.service';
 
 @Component({
-  selector: 'app-dashboard-home',
-  templateUrl: './dashboard-home.component.html',
-  styleUrls: ['./dashboard-home.component.scss']
+    selector: 'app-dashboard-home',
+    templateUrl: './dashboard-home.component.html',
+    styleUrls: ['./dashboard-home.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class DashboardHomeComponent implements OnInit {
   currentUser: any;
