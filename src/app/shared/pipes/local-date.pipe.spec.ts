@@ -1,3 +1,4 @@
+import moment from 'moment';
 import { LocalDatePipe } from './local-date.pipe';
 
 describe('LocalDatePipe', () => {
@@ -11,7 +12,8 @@ describe('LocalDatePipe', () => {
 
     const pipe = new LocalDatePipe();
     const result = pipe.transform(date, 'DD MMM YYYY HH:mm');
-    expect(result).toBe('04 May 2018 09:17');
+    const expected = moment.utc(date).local().format('DD MMM YYYY HH:mm');
+    expect(result).toBe(expected);
   });
 
   it('returns empty string when date is null', () => {

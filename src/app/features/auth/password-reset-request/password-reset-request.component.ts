@@ -1,5 +1,5 @@
 import { Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 
@@ -7,9 +7,11 @@ import { NotificationService } from '../../../core/services/notification.service
 import { AuthenticationService } from '../../../core/services/auth.service';
 
 @Component({
-  selector: 'app-password-reset-request',
-  templateUrl: './password-reset-request.component.html',
-  styleUrls: ['./password-reset-request.component.scss']
+    selector: 'app-password-reset-request',
+    templateUrl: './password-reset-request.component.html',
+    styleUrls: ['./password-reset-request.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class PasswordResetRequestComponent implements OnInit {
 
