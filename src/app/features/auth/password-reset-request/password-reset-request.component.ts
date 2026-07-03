@@ -39,7 +39,7 @@ export class PasswordResetRequestComponent implements OnInit {
     this.loading = true;
     this.authService.passwordResetRequest(this.email)
       .subscribe(
-        results => {
+        _results => {
           this.router.navigate(['/auth/login']);
           this.notificationService.openSnackBar('Password verification mail has been sent to your email address.');
         },

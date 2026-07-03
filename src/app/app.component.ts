@@ -1,5 +1,4 @@
-import { Component, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
-import { ThemeService } from './core/services/theme.service';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 // import { ApplicationService } from './core/services/application.service';
 
 @Component({

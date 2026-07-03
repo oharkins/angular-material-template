@@ -1,11 +1,10 @@
-import { Injectable, Inject, inject } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { delay, map } from 'rxjs/operators';
 // import * as jwt_decode from 'jwt-decode';
 import moment from 'moment';
 
-import { environment } from '../../../environments/environment';
-import { of, EMPTY } from 'rxjs';
+import { of } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
@@ -17,7 +16,7 @@ export class AuthenticationService {
 
   constructor() {}
 
-  login(email: string, password: string) {
+  login(_email: string, _password: string) {
     return of(true).pipe(
       delay(1000),
       map((/*response*/) => {
@@ -60,20 +59,20 @@ export class AuthenticationService {
     };
   }
 
-  passwordResetRequest(email: string) {
+  passwordResetRequest(_email: string) {
     return of(true).pipe(delay(1000));
   }
 
-  changePassword(email: string, currentPwd: string, newPwd: string) {
+  changePassword(_email: string, _currentPwd: string, _newPwd: string) {
     return of(true).pipe(delay(1000));
   }
 
   passwordReset(
-    email: string,
-    token: string,
-    password: string,
-    confirmPassword: string
-  ): any {
+    _email: string,
+    _token: string,
+    _password: string,
+    _confirmPassword: string
+  ) {
     return of(true).pipe(delay(1000));
   }
 }
